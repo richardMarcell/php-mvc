@@ -1,5 +1,5 @@
 <?php
-namespace App\Core;
+namespace App\Controllers;
 
 class StudentController
 {
@@ -13,7 +13,7 @@ class StudentController
     public function create()
     {
         echo '<h1>Tambah Siswa</h1>';
-        echo '<p>Menampilkan Form Tambah Siswa/p>';
+        echo '<p>Menampilkan Form Tambah Siswa</p>';
     }
 
 }
