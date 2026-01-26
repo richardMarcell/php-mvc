@@ -11,11 +11,17 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        if ($method == 'GET' && $uri == '/') {
+        if ($method == 'GET' && $uri == '/students') {
             require_once './app/controllers/StudentController.php';
             $controller = new StudentController();
             $controller->index();
+            return;
+        }
 
+        if ($method == 'GET' && $uri == '/students/create') {
+            require_once './app/controllers/StudentController.php';
+            $controller = new StudentController();
+            $controller->create();
             return;
         }
 
