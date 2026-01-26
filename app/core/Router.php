@@ -15,20 +15,35 @@ class Router
         ];
     }
 
+    private function buildPattern(string $path)
+    {
+        $pattern = str_replace(
+            '{id}',
+            '([0-9]+)',
+            $path,
+        );
+
+        return '#^' . $pattern . '$#';
+    }
+
     public function run()
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         foreach ($this->routes as $route) {
-            if ($method == $route['method'] && $uri == $route['path']) {
+            $pattern = $this->buildPattern($route['path']);
+
+            if (preg_match($pattern, $uri, $matches)) {
+                array_shift($matches);
                 require_once './app/controllers/' . $route['controller'] . '.php';
                 $function = $route['function'];
 
                 $controllerClass = 'App\\Controllers\\' . $route['controller'];
                 $controller = new $controllerClass();
 
-                $controller->$function();
+                call_user_func_array([$controller, $function], $matches);
+
                 return;
             }
         }
