@@ -8,19 +8,17 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        $uri = rtrim($uri, '/');
-
-        if ($method === 'GET' && $uri === '') {
+        if ($method === 'GET' && $uri === '/students') {
             require_once '../app/controllers/StudentController.php';
             $controller = new StudentController();
             $controller->index();
             return;
         }
 
-        if ($method === 'GET' && preg_match('/^\/students\/(\d+)$/', $uri, $matches)) {
+        if ($method === 'GET' && $uri === '/students/create') {
             require_once '../app/controllers/StudentController.php';
             $controller = new StudentController();
-            $controller->show($matches[1]);
+            $controller->create();
             return;
         }
 
