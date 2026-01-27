@@ -1,8 +1,6 @@
 <?php
 namespace App\Core;
 
-use App\Controller\StudentController;
-
 class Router
 {
 
