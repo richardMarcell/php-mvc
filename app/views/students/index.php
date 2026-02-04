@@ -1,46 +1,52 @@
-<div class="p-4 bg-white rounded-lg shadow-sm space-y-4">
-    <div>
-        <h1 class="text-xl font-bold">Daftar Siswa</h1>
-        <p>Menampilkan daftar seluruh siswa.</p>
+<div class="space-y-4">
+    <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">Daftar Siswa</h1>
+                <p class="text-gray-500">Total: <?= count($students) ?> siswa terdaftar</p>
+            </div>
+            <a href="/students/create" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                + Tambah Siswa
+            </a>
+        </div>
     </div>
 
-    <a href="/students/create"
-        class="inline-block mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Tambah Siswa</a>
-
-    <div class="overflow-x-auto bg-white rounded-lg shadow">
-        <table class="min-w-full border border-gray-200">
-            <thead class="bg-gray-100">
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <table class="min-w-full">
+            <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-4 py-3 text-sm font-semibold text-left text-gray-700 border-b">No</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-left text-gray-700 border-b">Nama</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-left text-gray-700 border-b">NIS</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-left text-gray-700 border-b">Kelas</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-left text-gray-700 border-b">No. Telepon</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">No</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">Nama</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">NIS</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">Kelas</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">No. Telepon</th>
+                    <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Aksi</th>
                 </tr>
             </thead>
-
             <tbody class="divide-y divide-gray-200">
                 <?php foreach ($students as $index => $student): ?>
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-4 py-2 text-sm text-gray-700">
-                            <?= $index + 1 ?>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-3 text-gray-600"><?= $index + 1 ?></td>
+                        <td class="px-4 py-3 font-medium text-gray-800"><?= $student['name'] ?></td>
+                        <td class="px-4 py-3 text-gray-600"><?= $student['nis'] ?></td>
+                        <td class="px-4 py-3">
+                            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm">
+                                <?= $student['class'] ?>
+                            </span>
                         </td>
-                        <td class="px-4 py-2 text-sm font-medium text-gray-900">
-                            <?= $student['name'] ?>
-                        </td>
-                        <td class="px-4 py-2 text-sm text-gray-700">
-                            <?= $student['nis'] ?>
-                        </td>
-                        <td class="px-4 py-2 text-sm text-gray-700">
-                            <?= $student['class'] ?>
-                        </td>
-                        <td class="px-4 py-2 text-sm text-gray-700">
-                            <?= $student['phone_number'] ?>
+                        <td class="px-4 py-3 text-gray-600"><?= $student['phone_number'] ?></td>
+                        <td class="px-4 py-3">
+                            <div class="flex justify-center space-x-2">
+                                <a href="/students/<?= $student['nis'] ?>"
+                                    class="text-blue-600 hover:underline text-sm">Lihat</a>
+                                <a href="/students/<?= $student['nis'] ?>/edit"
+                                    class="text-yellow-600 hover:underline text-sm">Edit</a>
+                                <button class="text-red-600 hover:underline text-sm">Hapus</button>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
     </div>
-
 </div>
