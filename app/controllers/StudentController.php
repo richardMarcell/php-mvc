@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 
-require_once './app/core/Controller.php';
+require_once '../app/core/Controller.php';
 
 class StudentController extends Controller
 {
