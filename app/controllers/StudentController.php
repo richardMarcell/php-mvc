@@ -1,12 +1,18 @@
 <?php
 namespace App\Controllers;
 
-class StudentController
+use App\Core\Controller;
+
+require_once '../app/core/Controller.php';
+
+class StudentController extends Controller
 {
 
     public function index()
     {
-        require_once '../app/views/students/index.php';
+        $this->view('students.index', [
+            'testing' => 'testing'
+        ]);
     }
 
     public function create()

@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+/* Beritahu Tailwind untuk memantau file PHP di folder views */
+@source "../../views/**/*.php";
