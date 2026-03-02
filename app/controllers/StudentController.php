@@ -2,20 +2,17 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Student;
 
 require_once '../app/core/Controller.php';
+require_once '../app/models/Student.php';
 
 class StudentController extends Controller
 {
-
     public function index()
     {
-        $students = [
-            ['name' => 'Andi', 'nis' => '12345', 'class' => '11 TKJ 1', 'phone_number' => '081234567890'],
-            ['name' => 'Budi', 'nis' => '12346', 'class' => '11 TKJ 2', 'phone_number' => '081234567891'],
-            ['name' => 'Nina', 'nis' => '12347', 'class' => '11 TKJ 3', 'phone_number' => '081234567892'],
-            ['name' => 'Gina', 'nis' => '12348', 'class' => '11 TKJ 1', 'phone_number' => '081234567893'],
-        ];
+        $studentModel = new Student();
+        $students = $studentModel->getStudents();
 
         $this->view('students.index', [
             'title' => 'Daftar Siswa',
@@ -32,9 +29,41 @@ class StudentController extends Controller
 
     public function show(string $id)
     {
+        $id = intval($id);
+        $studentModel = new Student();
+        $student = $studentModel->getStudent($id);
+
         $this->view('students.show', [
             'title' => 'Detail Siswa',
+            'student' => $student,
         ]);
+    }
+
+    public function edit(string $id)
+    {
+        $id = intval($id);
+        $studentModel = new Student();
+        $student = $studentModel->getStudent($id);
+
+        $this->view('students.edit', [
+            'title' => 'Edit Siswa',
+            'student' => $student,
+        ]);
+    }
+
+    public function store()
+    {
+        $data = $_POST;
+        $studentModel = new Student();
+        $studentModel->insert($data);
+    }
+
+    public function update(string $id)
+    {
+        $id = intval($id);
+        $data = $_POST;
+        $studentModel = new Student();
+        $studentModel->update($id, $data);
     }
 
 }

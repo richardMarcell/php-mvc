@@ -5,7 +5,7 @@
             <p class="text-gray-500">Masukkan data siswa baru</p>
         </div>
 
-        <form action="" method="post" class="space-y-4">
+        <form action="/students" method="post" class="space-y-4">
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
                 <input type="text" name="name" id="name" placeholder="Masukkan nama"
