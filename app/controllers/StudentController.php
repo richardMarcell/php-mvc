@@ -66,4 +66,11 @@ class StudentController extends Controller
         $studentModel->update($id, $data);
     }
 
+
+    public function destroy(string $id)
+    {
+        $studentModel = new Student();
+        $studentModel->delete(intval($id));
+    }
+
 }

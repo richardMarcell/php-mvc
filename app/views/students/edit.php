@@ -1,37 +1,38 @@
 <div class="max-w-xl mx-auto">
     <div class="bg-white rounded-lg shadow p-6">
         <div class="mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Tambah Siswa</h1>
-            <p class="text-gray-500">Masukkan data siswa baru</p>
+            <h1 class="text-2xl font-bold text-gray-800">Edit Siswa</h1>
+            <p class="text-gray-500">Ubah data siswa</p>
         </div>
 
-        <form action="/students" method="POST" class="space-y-4">
+        <form action="/students/<?= $student['id'] ?>" method="POST" class="space-y-4">
+            <input type="hidden" name="_method" value="PUT">
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
                 <input type="text" name="name" id="name" placeholder="Masukkan nama"
                     class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                    value="<?= $student['name'] ?>" required>
             </div>
 
             <div>
                 <label for="nis" class="block text-sm font-medium text-gray-700 mb-1">NIS</label>
                 <input type="text" name="nis" id="nis" placeholder="Contoh: 12345"
                     class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                    value="<?= $student['nis'] ?>" required>
             </div>
 
             <div>
                 <label for="class" class="block text-sm font-medium text-gray-700 mb-1">Kelas</label>
                 <input type="text" name="class" id="class" placeholder="Contoh: 11 TKJ 1"
                     class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                    value="<?= $student['class'] ?>" required>
             </div>
 
             <div>
                 <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon</label>
                 <input type="text" name="phone_number" id="phone_number" placeholder="Contoh: 081234567890"
                     class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                    value="<?= $student['phone_number'] ?>" required>
             </div>
 
             <div class="flex space-x-3 pt-4">

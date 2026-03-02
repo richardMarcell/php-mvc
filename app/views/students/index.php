@@ -37,11 +37,16 @@
                         <td class="px-4 py-3 text-gray-600"><?= $student['phone_number'] ?></td>
                         <td class="px-4 py-3">
                             <div class="flex justify-center space-x-2">
-                                <a href="/students/<?= $student['nis'] ?>"
+                                <a href="/students/<?= $student['id'] ?>"
                                     class="text-blue-600 hover:underline text-sm">Lihat</a>
-                                <a href="/students/<?= $student['nis'] ?>/edit"
+                                <a href="/students/<?= $student['id'] ?>/edit"
                                     class="text-yellow-600 hover:underline text-sm">Edit</a>
-                                <button class="text-red-600 hover:underline text-sm">Hapus</button>
+
+                                <form onsubmit="confirm('Apakah Anda yakin Ingin Menghapus Data Siswa Ini?')"
+                                    class="flex items-center" action="/students/<?= $student['id'] ?>" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="text-red-600 hover:underline text-sm">Hapus</button>
+                                </form>
                             </div>
                         </td>
                     </tr>

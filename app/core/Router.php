@@ -29,12 +29,16 @@ class Router
     public function run()
     {
         $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'POST' && isset($_POST['_method'])) {
+            $method = strtoupper($_POST['_method']);
+        }
+
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         foreach ($this->routes as $route) {
             $pattern = $this->buildPattern($route['path']);
 
-            if (preg_match($pattern, $uri, $matches)) {
+            if ($route['method'] === $method && preg_match($pattern, $uri, $matches)) {
                 array_shift($matches);
                 require_once '../app/controllers/' . $route['controller'] . '.php';
                 $function = $route['function'];
