@@ -51,6 +51,14 @@
                         </td>
                     </tr>
                 <?php endforeach ?>
+
+                <?php if (empty($students)): ?>
+                    <tr>
+                        <td colspan="7" class="px-4 py-3 text-center text-gray-500">
+                            Tidak ada data siswa.
+                        </td>
+                    </tr>
+                <?php endif ?>
             </tbody>
         </table>
     </div>
