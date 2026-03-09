@@ -5,14 +5,12 @@ use App\Core\Controller;
 
 require_once '../app/core/Controller.php';
 
-class StudentController extends Controller
+class StudentController
 {
 
     public function index()
     {
-        $this->view('students.index', [
-            'testing' => 'testing'
-        ]);
+        require_once '../app/views/students/index.php';
     }
 
     public function create()
