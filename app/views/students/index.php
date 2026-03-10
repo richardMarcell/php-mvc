@@ -9,8 +9,14 @@
 </head>
 
 <body>
-    <h1 class="text-red-900">Daftar Siswa</h1>
-    <p>Menampilkan daftar siswa</p>
+    <!-- Header Start -->
+    <header class="bg-blue-500 text-white">
+        <div class="flex justify-between container mx-auto">
+            <a href="/students">Sistem Sekolah</a>
+            <a href="/students/create">+ Tambah Siswa</a>
+        </div>
+    </header>
+    <!-- Header End -->
 </body>
 
 </html>
