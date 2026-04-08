@@ -1,8 +1,6 @@
 <?php
 namespace App\Core;
 
-use App\Controllers\StudentController;
-
 class Router
 {
     private array $routes = [];
