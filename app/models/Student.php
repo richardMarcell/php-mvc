@@ -67,9 +67,9 @@ class Student extends Database
         $query = "UPDATE {$this->table} SET name = ?, nis = ?, class = ?, phone_number = ? where id = ?";
         $stmt = $this->connection->prepare($query);
         $stmt->bind_param('ssssi', $name, $nis, $class, $phoneNumber, $id);
-        $stmt->execute();
+        $isExecute = $stmt->execute();
 
-        if ($stmt->affected_rows > 0) {
+        if ($stmt->affected_rows > 0 || $isExecute) {
             header('Location: /students');
             exit();
         } else {
