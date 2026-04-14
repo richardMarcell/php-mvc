@@ -1,8 +1,10 @@
 <?php
 namespace App\Controllers;
 require_once '../app/core/Controller.php';
+require_once '../app/models/Student.php';
 
 use App\Core\Controller;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
