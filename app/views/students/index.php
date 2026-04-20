@@ -32,16 +32,20 @@
                             <?= $student['class'] ?>
                         </td>
                         <td class="px-4 py-2 text-left">
-                            <?= $student['nis']?>
+                            <?= $student['nis'] ?>
                         </td>
                         <td class="px-4 py-2 text-left">
-                            <?= $student['phone_number']?>
+                            <?= $student['phone_number'] ?>
                         </td>
                         <td class="px-4 py-2">
                             <div class="flex justify-center items-center gap-4">
-                                <a href="/students/<?= $student['id']?>" class="text-green-500">Detail</a>
-                                <a href="/students/<?= $student['id']?>/edit" class="text-yellow-500">Edit</a>
-                                <a href="" class="text-red-500">Hapus</a>
+                                <a href="/students/<?= $student['id'] ?>" class="text-green-500">Detail</a>
+                                <a href="/students/<?= $student['id'] ?>/edit" class="text-yellow-500">Edit</a>
+                                <form onsubmit="return confirm('Apakah Anda yakin ingin menghapus data siswa ini?')"
+                                    action="/students/<?= $student['id'] ?>" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="text-red-500" type="submit">Hapus</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
