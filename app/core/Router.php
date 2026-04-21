@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-use App\Controllers\StudentController;
-
 class Router
 {
     private array $routes = [];
@@ -23,7 +21,7 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'POST' && isset($_POST['_method'])) {
-            $method = $_POST['method'];
+            $method = strtoupper($_POST['_method']);
         }
 
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
